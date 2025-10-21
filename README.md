@@ -10,6 +10,47 @@ work with and eventually provide helpful, automated insights.
 
 ---
 
+## 📝 Design and Implementation Notes
+
+### 1️⃣ The fields chosen for the Customer model and why
+
+- **id (UUID)**: Globally unique identifier for each customer, ensures no collisions.
+- **name (String)**: Required for identification and display.
+- **email (String)**: Required and unique, used for login or contact.
+- **type**: Differentiates customer categories.
+- **status (Enum: ACTIVE / INACTIVE)**: Enables soft deletion and historical tracking.
+- **createdAt / updatedAt (LocalDateTime)**: For auditing, sorting, and tracking changes.
+
+---
+
+### 2️⃣ Approach to Testing, Error Handling, and Extensibility
+
+**Testing:**
+
+- Used **MockMvc** for controller tests and **Mockito** for service mocking.
+- Covered edge cases like invalid input, duplicate emails, not-found resources, and empty pages.
+- Tested both **happy paths** and **failure scenarios** for robust coverage.
+
+**Error Handling:**
+
+- Centralized exceptions using **custom exception classes** (`CustomerNotFoundException`, `CustomerAlreadyExistsException`).
+- Standardized error responses with `code` and `message`.
+
+**Extensibility:**
+
+- Used **DTOs** for input/output to decouple API from database model.
+- `CustomerStatus` and `CustomerType` enums allow easy addition of new statuses or types.
+- Soft deletion (`INACTIVE` status) preserves historical data and allows future recovery.
+
+---
+
+### 3️⃣ Shortcuts or Assumptions Made Due to 2-Hour Timebox
+
+- Limited business logic; focus was on CRUD operations and validation.
+- Used **in-memory database (H2) or simplified DB setup** for testing.
+- Logging, metrics, and additional error details were minimized to meet the time constraint.
+
+
 ## 📌 Endpoints
 
 ### 1️⃣ Create Customer
