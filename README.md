@@ -30,6 +30,22 @@ work with and eventually provide helpful, automated insights.
 
 ---
 
+## 📖 API Documentation (Swagger)
+
+This API uses **Springdoc OpenAPI** to generate interactive documentation. Swagger UI allows you to explore and test all API endpoints directly from your browser.
+
+---
+
+### 🔹 Access URLs
+
+- **Swagger UI (interactive web interface):**  
+  [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+- **OpenAPI JSON (API definition in JSON format):**  
+  [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+---
+
 ## 🚀 How to run?
 
 ### 1️⃣ Build Docker image

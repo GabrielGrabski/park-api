@@ -49,14 +49,14 @@ class CustomerServiceTest {
 
     @Test
     void saveShouldSaveCustomerWhenValid() {
-        when(repository.findByEmail(request.email())).thenReturn(Optional.empty());
+        when(repository.findByEmailAndStatus(request.email(), CustomerStatus.ACTIVE)).thenReturn(Optional.empty());
         service.save(request);
         verify(repository, times(1)).save(any(Customer.class));
     }
 
     @Test
     void saveShouldThrowExceptionWhenEmailAlreadyExists() {
-        when(repository.findByEmail(request.email())).thenReturn(Optional.of(new Customer()));
+        when(repository.findByEmailAndStatus(request.email(), CustomerStatus.ACTIVE)).thenReturn(Optional.of(new Customer()));
 
         assertThatExceptionOfType(CustomerAlreadyExistsException.class)
                 .isThrownBy(() -> service.save(request))

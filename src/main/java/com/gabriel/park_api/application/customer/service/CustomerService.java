@@ -48,7 +48,7 @@ public class CustomerService {
     }
 
     private void validateUserExistsByEmail(final String email) {
-        var customer = repository.findByEmail(email);
+        var customer = repository.findByEmailAndStatus(email, ACTIVE);
         if (customer.isPresent())
             throw new CustomerAlreadyExistsException(format("Customer with email %s already exists.", email));
     }

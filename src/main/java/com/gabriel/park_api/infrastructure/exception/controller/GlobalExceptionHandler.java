@@ -55,6 +55,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public List<ErrorResponse> handle(Exception ex) {
         return List.of(new ErrorResponse(UNKNOWN_ERROR.name(),
-                "An unexpected Error occurred, please contact an admin."));
+                ex.getMessage()));
     }
 }

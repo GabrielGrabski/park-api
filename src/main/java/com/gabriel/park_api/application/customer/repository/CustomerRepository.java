@@ -17,5 +17,5 @@ public interface CustomerRepository extends JpaRepository<Customer, UUID> {
 
     Optional<Customer> findByIdAndStatus(UUID id, CustomerStatus status);
 
-    Optional<Customer> findByEmail(String email);
+    Optional<Customer> findByEmailAndStatus(String email, CustomerStatus status);
 }
